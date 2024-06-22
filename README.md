@@ -28,7 +28,7 @@ This will download the MNIST dataset the first time it is run and then start tra
 ## Changelog
 
 * 2024.06.22
-    * IInitial repository setup and first commit.
+    * Initial repository setup and first commit.
 
 ## License
 

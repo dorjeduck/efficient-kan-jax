@@ -32,6 +32,30 @@ In additition, was also ported Ziyao Li's [FastKAN](https://github.com/ZiyaoLi/f
 python mnist_fastkan_jax.py
 ```
 
+### Benchmark
+
+To compare the performance of the EfficientKAN and FastKAN models, we ran a benchmark on the MNIST dataset. The models were trained for 10 epochs with a batch size of 64. Below are the results: (Mac Book Pro, M2)
+
+```bash
+Benchmarking EfficientKAN
+Average Epoch Time: 11.81s
+Final Training Loss: 0.0122
+Final Validation Loss: 0.1102
+Final Validation Accuracy: 0.9706
+
+Benchmarking FastKAN
+Average Epoch Time: 7.34s
+Final Training Loss: 0.0002
+Final Validation Loss: 0.1180
+Final Validation Accuracy: 0.9723
+```
+
+The benchmark can be run with the following command:
+
+```bash
+python benchmark.py
+```
+
 ## Changelog
 
 * 2024.06.23

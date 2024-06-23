@@ -60,6 +60,7 @@ python benchmark.py
 
 * 2024.06.23
   * Added FastKAN JAX port to repo.
+  * Benchmark added
 * 2024.06.22
   * Initial repository setup and first commit.
 

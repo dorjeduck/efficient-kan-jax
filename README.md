@@ -19,7 +19,7 @@ This will install JAX, Optax, Flax, PyTorch, Torchvision, and TQDM.
 After installing the dependencies, you can run the MNIST example using the following command:
 
 ```bash
-python mnist.py
+python mnist_efficient_kan.py
 ```
 
 This will download the MNIST dataset the first time it is run and then start training the model, displaying the training and validation progress.

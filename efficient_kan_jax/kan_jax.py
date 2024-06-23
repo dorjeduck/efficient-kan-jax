@@ -35,6 +35,29 @@ class KANLinear(nn.Module):
         if self.enable_standalone_scale_spline:
             self.spline_scaler = self.param("spline_scaler", nn.initializers.ones, (self.out_features, self.in_features))
 
+    def __call__(self, x):
+        """
+        Forward pass of the linear layer.
+
+        Args:
+            x (jax.ndarray): Input tensor of shape (batch_size, in_features).
+
+        Returns:
+            jax.ndarray: Output tensor of shape (batch_size, out_features).
+        """
+        assert x.shape[-1] == self.in_features
+        original_shape = x.shape
+        x = x.reshape(-1, self.in_features)
+
+        base_output = self.base_activation(x) @ self.base_weight.T
+        spline_output = (self.b_splines(x).reshape(x.shape[0], -1) @ self.scaled_spline_weight.reshape(self.out_features, -1).T)
+        output = base_output + spline_output
+        
+        output = output.reshape(*original_shape[:-1], self.out_features)
+        return output
+
+    
+    
     def b_splines(self, x):
         """
         Compute the B-spline bases for the given input tensor.
@@ -83,27 +106,7 @@ class KANLinear(nn.Module):
     def scaled_spline_weight(self):
         return self.spline_weight * (self.spline_scaler[..., None] if self.enable_standalone_scale_spline else 1.0)
 
-    def __call__(self, x):
-        """
-        Forward pass of the linear layer.
-
-        Args:
-            x (jax.ndarray): Input tensor of shape (batch_size, in_features).
-
-        Returns:
-            jax.ndarray: Output tensor of shape (batch_size, out_features).
-        """
-        assert x.shape[-1] == self.in_features
-        original_shape = x.shape
-        x = x.reshape(-1, self.in_features)
-
-        base_output = self.base_activation(x) @ self.base_weight.T
-        spline_output = (self.b_splines(x).reshape(x.shape[0], -1) @ self.scaled_spline_weight.reshape(self.out_features, -1).T)
-        output = base_output + spline_output
-        
-        output = output.reshape(*original_shape[:-1], self.out_features)
-        return output
-
+   
     def update_grid(self, x, margin=0.01):
         """
         Update the grid used for B-splines based on the input data.

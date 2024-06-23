@@ -10,10 +10,9 @@ We have ported the `mnist.py` example to use our JAX-based KAN implementation.
 
 ```bash
 pip install -r requirements.txt
-``` 
+```
 
 This will install JAX, Optax, Flax, PyTorch, Torchvision, and TQDM.
-
 
 ### Running the MNIST Example
 
@@ -21,14 +20,16 @@ After installing the dependencies, you can run the MNIST example using the follo
 
 ```bash
 python mnist.py
-``` 
+```
 
 This will download the MNIST dataset the first time it is run and then start training the model, displaying the training and validation progress.
 
 ## Changelog
 
+* 2024.06.23
+  * Added FastKAN JAX port to repo.
 * 2024.06.22
-    * Initial repository setup and first commit.
+  * Initial repository setup and first commit.
 
 ## License
 

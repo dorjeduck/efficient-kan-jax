@@ -34,7 +34,7 @@ python mnist_fastkan_jax.py
 
 ### Benchmark
 
-To compare the performance of the EfficientKAN and FastKAN models, we ran a benchmark on the MNIST dataset. The models were trained for 10 epochs with a batch size of 64. Below are the results: (Mac Book Pro, M2)
+To compare the performance of the JAX port of EfficientKAN and FastKAN, we ran a benchmark on the MNIST dataset. The models were trained for 10 epochs with a batch size of 64. Below are the results: (Mac Book Pro, M2)
 
 ```bash
 Benchmarking EfficientKAN JAX

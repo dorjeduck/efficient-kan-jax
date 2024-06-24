@@ -23,10 +23,10 @@ if __name__ == "__main__":
     epochs = 10
 
     # Benchmark EfficientKAN
-    results.append(benchmark(EfficientKAN, "EfficientKAN",epochs=epochs))
+    results.append(benchmark(EfficientKAN, "EfficientKAN JAX",epochs=epochs))
 
     # Benchmark FastKAN
-    results.append(benchmark(FastKAN, "FastKAN",epochs=epochs))
+    results.append(benchmark(FastKAN, "FastKAN JAX",epochs=epochs))
 
     for result in results:
         print(f"Benchmarking {result['model_name']}")

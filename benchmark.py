@@ -1,5 +1,5 @@
-from efficient_kan_jax import KAN as EfficientKAN
-from fastkan_jax import  FastKAN
+from efficient_kan_jax import KAN as EfficientKAN_JAX
+from fastkan_jax import  FastKAN as FastKAN_JAX
 from trainer import Trainer
 from mnist_data_loader import load_mnist_data
 import numpy as np
@@ -22,11 +22,11 @@ if __name__ == "__main__":
 
     epochs = 10
 
-    # Benchmark EfficientKAN
-    results.append(benchmark(EfficientKAN, "EfficientKAN JAX",epochs=epochs))
+    # Benchmark EfficientKAN JAX
+    results.append(benchmark(EfficientKAN_JAX, "EfficientKAN JAX",epochs=epochs))
 
-    # Benchmark FastKAN
-    results.append(benchmark(FastKAN, "FastKAN JAX",epochs=epochs))
+    # Benchmark FastKAN JAX
+    results.append(benchmark(FastKAN_JAX, "FastKAN JAX",epochs=epochs))
 
     for result in results:
         print(f"Benchmarking {result['model_name']}")
